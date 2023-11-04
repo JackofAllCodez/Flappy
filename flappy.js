@@ -3,19 +3,19 @@ let board,context;
 let w=360,h=450;
 
 //headout plane
-let bW=60,bH=50,bX=bW/2,bY=4*bH;
+let bW=50,bH=25,bX=bW/2,bY=4*bH;
 
-//mountains
+//buildings
 let item=[];
 let mW=130,mH=250,mX=w,mY=140;
-let bottomMount;
+let bottomMount; 
 
 //clouds
 let cW=130,cH=90,cX=w,cY=40;
 let topCloud;
 
 //physics
-let velocityX=-2,velocityY=0,gravity=0.4;
+let velocityX=-2,velocityY=0,gravity=0.43;
 let gameOver=false;
 let score=0; 
 
@@ -89,6 +89,8 @@ function update(){
 
     if (gameOver){
         context.fillText("GAME OVER",5,100);
+        context.font="30px sans-serif";
+        context.fillText("Press X to restart",65,250);
     }
 }
 function placeItems(){
@@ -120,9 +122,9 @@ function placeItems(){
 
  function detectCollision(a,b){
      return a.x + 10 < b.x + b.width &&
-            a.x + a.width - 19 > b.x &&
-            a.y + 13 < b.y + b.height &&
-            a.y + a.height - 17.5 > b.y
+            a.x + a.width - 15 > b.x &&
+            a.y + 15 < b.y + b.height &&
+            a.y + a.height - 5 > b.y
  }
  function touchStart() {
     if (!gameOver) {
